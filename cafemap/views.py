@@ -9,7 +9,12 @@ def index(request):
     cafes = Cafe.objects.order_by("name")
     list_cafes = []
     for c in cafes:
-        list_cafes.append({'name': c.name, 'link': f'{WEBSITE}cafe/{c.id}'})
+        list_cafes.append({
+            'name': c.name,
+            'address_one': c.address.line_one(),
+            'address_two': c.address.line_two(),
+            'link': f'{WEBSITE}cafe/{c.id}'
+        })
     print(list_cafes)
     return render(request, 'cafemap/cafes.html', {
         'cafes': list_cafes

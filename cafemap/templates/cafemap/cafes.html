@@ -1,36 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
         {% load static %}
 
-        <link rel="icon" type="image/x-icon" href="../static/img/fav.ico">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/cafemap.css' %}" type="text/css">
+        <!--link rel="icon" type="image/x-icon" href="../static/img/fav.ico"-->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
         <title>Cafe</title>
     </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-8">
-                    {% if cafes %}
-                        {% for cafe in cafes %}
-                            <a href="{{cafe.link}}">{{cafe.name}}</a>
-                        {% endfor %}
-                    {% else %}
-                        <h1>Sorry, looks like we don't have a database set up.</h1>
-                    {% endif %}
+    <body class="w-full h-screen">
+        <div class="bg-cover bg-center h-screen" style="background-image: url('../static/img/bg.jpeg')">
+            <div class="w-full h-full flex flex-col backdrop-blur-md">
+                <header class="bg-white">
+                    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+                        <div class="flex lg:flex-1">
+                            <a href="#" class="-m-1.5 p-1.5">
+                                <h2 class="font-semibold">CAFEMAP</h2>
+                            </a>
+                        </div>
+                        <div class="hidden lg:flex lg:gap-x-12">
+                            <a href="#" class="text-sm  leading-6 text-gray-900">Map View</a>
+                            <a href="#" class="text-sm font-bold leading-6 text-gray-900">List View</a>
+                        </div>
+                        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                            <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in</a>
+                        </div>
+                    </nav>
+                </header>
+                <div class="justify-center items-center">
+                <h1 class="mt-5 mb-10 text-center text-4xl text-white font-semibold drop-shadow-lg">WELCOME TO CAFEMAP</h1>
+        
+                {% if cafes %}
+                    {% for cafe in cafes %}
+                        <div class="relative bg-white px-6 pt-10 pb-10 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-md sm:px-10 flex font-sans">
+                            <div class="flex-none w-48 relative">
+                                <img src="../static/img/cafe.jpeg" alt="typical cafe pic" class="absolute inset-0 w-full h-full object-cover rounded-md" loading="lazy" />
+                            </div>
+                            <div class="flex-auto p-6">
+                                <div class="flex flex-wrap pb-4">
+                                    <h1 class="flex-auto text-lg font-semibold text-slate-900">
+                                        {{cafe.name}}
+                                    </h1>
+                                    <div class="flex-auto w-full">{{cafe.address_one}}</div>
+                                    <div class="flex-auto w-full">{{cafe.address_two}}</div>
+                                </div>
+                                <div class="flex space-x-4 text-sm font-medium">
+                                    <div class="flex-auto flex space-x-4">
+                                        <button class="h-10 px-6 font-semibold rounded-md bg-black text-white" type="submit">
+                                        View
+                                        </button>
+                                        <button class="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900" type="button">
+                                        Directions
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        <!--a href="{{cafe.link}}">{{cafe.name}}</a-->
+                    {% endfor %}
+                {% else %}
+                    <h1>Sorry, looks like we don't have a database set up.</h1>
+                {% endif %}
                 </div>
-                <div class="col-sm-2"></div>
             </div>
         </div>
+        <footer>2024 | Eaton Apps</footer>
 
-        <footer class="text-center row fixed-bottom p-1 footer">2024 | Eaton Apps</footer>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </body>
 </html>

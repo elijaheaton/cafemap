@@ -10,6 +10,15 @@ class Address(models.Model):
 
     def __str__(self):
         return f'{self.street} {self.street_two}\n{self.city}, {self.state} {self.zip_code}'
+    
+    def line_one(self):
+        line = f'{self.street}'
+        if self.street_two:
+            line += f', {self.street_two}'
+        return line
+    
+    def line_two(self):
+        return f'{self.city}, {self.state} {self.zip_code}'
 
 class Cafe(models.Model):
     id = models.CharField(primary_key=True, unique=True, max_length=10)
