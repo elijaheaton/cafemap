@@ -30,3 +30,11 @@ class Cafe(models.Model):
 
     def __str__(self):
         return self.name
+
+class User(models.Model):
+    email = models.EmailField(primary_key=True, unique=True)
+    name = models.CharField(max_length=50)
+    password = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.email
