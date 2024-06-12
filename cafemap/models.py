@@ -27,9 +27,23 @@ class Cafe(models.Model):
     wifi = models.BooleanField()
     seating = models.IntegerField(default=0)
     outdoor_seating = models.IntegerField(default=0)
+    bathrooms = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
+    
+    def get_amenities(self):
+        amenities = {}
+        if self.wifi:
+            amenities['Wifi'] = self.wifi
+        if self.seating:
+            amenities['Seating'] = self.seating
+        if self.outdoor_seating:
+            amenities['Outdoor Seating'] = self.outdoor_seating
+        if self.bathrooms:
+            amenities['Bathrooms'] = self.bathrooms
+
+        return amenities
 
 class User(models.Model):
     email = models.EmailField(primary_key=True, unique=True)

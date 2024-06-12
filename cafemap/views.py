@@ -26,7 +26,12 @@ def cafe(request, id):
     response = f"This is cafe {id}"
     print(response)
     cafe = get_object_or_404(Cafe, pk=id)
-    return render(request, 'cafemap/cafe.html', {'cafe': cafe})
+    amenities = cafe.get_amenities()
+    return render(request, 'cafemap/cafe.html', {
+        'cafe': cafe,
+        'address': cafe.address,
+        'amenities': amenities
+    })
 
 def login(request):
     if request.method == 'GET':

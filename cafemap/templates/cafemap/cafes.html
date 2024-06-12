@@ -11,7 +11,7 @@
     </head>
     <body class="w-full h-screen">
         <div class="bg-cover bg-center h-screen" style="background-image: url('../static/img/bg.jpeg')">
-            <div class="w-full h-full flex flex-col backdrop-blur-md">
+            <div class="w-full h-screen flex flex-col backdrop-blur-md">
                 <header class="bg-white">
                     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
                         <div class="flex lg:flex-1">
@@ -29,43 +29,43 @@
                         </div>
                     </nav>
                 </header>
-                <div class="justify-center items-center">
-                <h1 class="mt-5 mb-10 text-center text-4xl text-white font-semibold drop-shadow-lg">WELCOME TO CAFEMAP</h1>
-        
-                {% if cafes %}
-                    {% for cafe in cafes %}
-                        <div class="relative bg-white px-6 pt-10 pb-10 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-md sm:px-10 flex font-sans">
-                            <div class="flex-none w-48 relative">
-                                <img src="../static/img/cafe.jpeg" alt="typical cafe pic" class="absolute inset-0 w-full h-full object-cover rounded-md" loading="lazy" />
-                            </div>
-                            <div class="flex-auto p-6">
-                                <div class="flex flex-wrap pb-4">
-                                    <h1 class="flex-auto text-lg font-semibold text-slate-900">
-                                        {{cafe.name}}
-                                    </h1>
-                                    <div class="flex-auto w-full">{{cafe.address_one}}</div>
-                                    <div class="flex-auto w-full">{{cafe.address_two}}</div>
+                <div class="justify-center items-center h-screen">
+                    <h1 class="mt-5 mb-10 text-center text-4xl text-white font-semibold drop-shadow-lg">WELCOME TO CAFEMAP</h1>
+            
+                    {% if cafes %}
+                        {% for cafe in cafes %}
+                            <div class="relative bg-white px-6 pt-10 pb-10 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-md sm:px-10 flex font-sans">
+                                <div class="flex-none w-48 relative">
+                                    <img src="../static/img/cafe.jpeg" alt="typical cafe pic" class="absolute inset-0 w-full h-full object-cover rounded-md" loading="lazy" />
                                 </div>
-                                <div class="flex space-x-4 text-sm font-medium">
-                                    <div class="flex-auto flex space-x-4">
-                                        <button class="h-10 px-6 font-semibold rounded-md bg-black text-white hover:bg-green-600" type="submit">
-                                        View
-                                        </button>
-                                        <button class="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900 hover:bg-green-600 hover:text-white" type="button">
-                                        Directions
-                                        </button>
+                                <div class="flex-auto p-6">
+                                    <div class="flex flex-wrap pb-4">
+                                        <h1 class="flex-auto text-lg font-semibold text-slate-900">
+                                            {{cafe.name}}
+                                        </h1>
+                                        <div class="flex-auto w-full">{{cafe.address_one}}</div>
+                                        <div class="flex-auto w-full">{{cafe.address_two}}</div>
+                                    </div>
+                                    <div class="flex space-x-4 text-sm font-medium">
+                                        <div class="flex-auto flex space-x-4">
+                                            <a href="{{cafe.link}}" class="flex items-center justify-center h-10 px-6 font-semibold rounded-md bg-black text-white hover:bg-green-600">
+                                            View
+                                            </a>
+                                            <a href="#" class="flex items-center justify-center h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900 hover:bg-green-600 hover:text-white">
+                                            Directions
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                        <!--a href="{{cafe.link}}">{{cafe.name}}</a-->
-                    {% endfor %}
-                {% else %}
-                    <h1>Sorry, looks like we don't have a database set up.</h1>
-                {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <h1>Sorry, looks like we don't have a database set up.</h1>
+                    {% endif %}
                 </div>
+            
+                <footer class="flex flex-col items-center bg-zinc-50 text-center text-surface dark:bg-neutral-700 dark:text-white">2024 | Eaton Apps</footer>
             </div>
-            <footer class="flex flex-col items-center bg-zinc-50 text-center text-surface dark:bg-neutral-700 dark:text-white">2024 | Eaton Apps</footer>
         </div>
 
     </body>
